@@ -28,8 +28,8 @@ public class App {
         try {
             transaction.begin(); // Iniciando a transação
             
-            em.persist(br); // Persistindo o Pais Brasil
-            em.persist(pr); // Persistindo o estado do Paraná
+           // em.persist(br); // Persistindo o Pais Brasil
+            //em.persist(pr); // Persistindo o estado do Paraná
             em.persist(medianeira); // Persistindo a cidade de Medianeira 
             
             transaction.commit(); // Efetivando as alterações do DB

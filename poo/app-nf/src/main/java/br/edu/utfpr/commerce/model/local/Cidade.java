@@ -1,5 +1,6 @@
 package br.edu.utfpr.commerce.model.local;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Cidade {
     @Column(name = "nome", length = 100, nullable = false)
     private String nome;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "estado_id")
     private Estado estado;
 

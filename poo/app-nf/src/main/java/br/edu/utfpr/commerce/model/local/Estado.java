@@ -1,5 +1,6 @@
 package br.edu.utfpr.commerce.model.local;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Estado {
     @Column(name = "sigla", length = 3, nullable = false, unique = true)
     private String sigla;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "pais_id")
     private Pais pais;
 
