@@ -7,14 +7,15 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         
         <!-- Configuração do modo de ação da Validation API com JPA -->
+        <!--
         <validation-mode>CALLBACK</validation-mode>
-        
+        -->
         <properties>
             <!-- Driver do Banco de dados -->
-            <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
       
             <!-- URL de conexão ao banco de dados -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/db_comercio"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_comercio"/>
       
             <!-- Credenciais (Usuário e Senha) de acesso ao banco de dados -->
             <property name="jakarta.persistence.jdbc.user" value="root"/>
