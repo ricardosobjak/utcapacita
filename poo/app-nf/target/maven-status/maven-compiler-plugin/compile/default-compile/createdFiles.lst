@@ -1,0 +1,17 @@
+br\edu\utfpr\commerce\model\local\Pais.class
+br\edu\utfpr\commerce\model\NotaFiscal.class
+br\edu\utfpr\commerce\model\Marca.class
+br\edu\utfpr\commerce\model\PessoaJuridica.class
+br\edu\utfpr\commerce\model\Pessoa.class
+br\edu\utfpr\commerce\model\ContaReceber.class
+br\edu\utfpr\commerce\model\local\Cidade.class
+br\edu\utfpr\commerce\App.class
+br\edu\utfpr\commerce\model\Categoria.class
+br\edu\utfpr\commerce\model\TipoUsuario.class
+br\edu\utfpr\commerce\model\Filial.class
+br\edu\utfpr\commerce\model\local\Endereco.class
+br\edu\utfpr\commerce\model\Estoque.class
+br\edu\utfpr\commerce\model\local\Estado.class
+br\edu\utfpr\commerce\model\Usuario.class
+br\edu\utfpr\commerce\model\PessoaFisica.class
+br\edu\utfpr\commerce\model\Produto.class
