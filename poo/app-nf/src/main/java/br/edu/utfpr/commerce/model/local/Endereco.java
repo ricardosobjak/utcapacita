@@ -1,5 +1,8 @@
 package br.edu.utfpr.commerce.model.local;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class Endereco {
     // Atributos
     private String logradouro;

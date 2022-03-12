@@ -1,5 +1,8 @@
 package br.edu.utfpr.commerce.model;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -18,6 +21,11 @@ public class NotaFiscal {
     private String observacao;
     private Filial filial;
     private Pessoa pessoa;
+
+    @ManyToMany
+    @JoinTable(name = "tb_notafiscal_itens",
+            joinColumns = @JoinColumn(name = "notafiscal_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id"))
     private List<Produto> itens = new ArrayList<>();
 
     public NotaFiscal() {

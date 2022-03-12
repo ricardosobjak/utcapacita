@@ -2,6 +2,7 @@ package br.edu.utfpr.commerce.model;
 
 import br.edu.utfpr.commerce.model.local.Endereco;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +25,7 @@ public abstract class Pessoa {
     @Column(name = "nome", length = 100, nullable = false)
     private String nome;
     
-    @Transient
+    @Embedded
     private Endereco endereco;
 
     public Pessoa() {

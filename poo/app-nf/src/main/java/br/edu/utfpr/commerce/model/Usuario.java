@@ -1,5 +1,10 @@
 package br.edu.utfpr.commerce.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_usuario")
 public class Usuario extends PessoaFisica {
     private String usuario;
     private String senha;

@@ -1,5 +1,6 @@
 package br.edu.utfpr.commerce.model;
 
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class Produto {
     private Float pesoBruto;
     private Marca marca;
     private Categoria categoria;
+    
+    @OneToMany(mappedBy = "produto")
     private List<Estoque> estoques = new ArrayList<>();
 
     public Produto() {

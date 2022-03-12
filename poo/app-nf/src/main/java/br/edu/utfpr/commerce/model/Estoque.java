@@ -1,5 +1,8 @@
 package br.edu.utfpr.commerce.model;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 /**
  * Representa o ESTOQUE de um 'Produto' em uma 'Filial'.
  * 
@@ -8,8 +11,15 @@ package br.edu.utfpr.commerce.model;
 public class Estoque {
 
     private Long id;
+    
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
     private Produto produto;
+    
+    @ManyToOne
+    @JoinColumn(name = "filial_id")
     private Filial filial;
+    
     private float valorCusto;
     private float quantidade;
 
