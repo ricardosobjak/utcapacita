@@ -1,9 +1,10 @@
 package br.edu.utfpr.controller;
 
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 
 public interface GenericController<T, TDTO, ID> {
-    public T create(TDTO entity);
-    public T update(ID id, TDTO entity);
-    public List<T> getAll();
+    public ResponseEntity<Object> create(TDTO entity);
+    public ResponseEntity<Object> update(ID id, TDTO entity);
+    public ResponseEntity<List<T>> getAll();
 }
