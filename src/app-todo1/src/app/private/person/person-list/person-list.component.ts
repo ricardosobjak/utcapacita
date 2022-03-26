@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../person.model';
+import { PersonService } from '../person.service';
 
 @Component({
   selector: 'app-person-list',
@@ -9,16 +10,16 @@ import { Person } from '../person.model';
 export class PersonListComponent implements OnInit {
   people: Person[] = [];
 
-  constructor() {
-    for (let i = 0; i < 10; i++) {
-      let p = new Person();
-      p.first_name = 'Pessoa ';
-      p.last_name = ' x ' + i;
-      p.email = 'mail@mail.com';
+  constructor(private personService: PersonService) {}
 
-      this.people.push(p);
-    }
+  ngOnInit(): void {
+    this.loadPeople();
   }
 
-  ngOnInit(): void {}
+  public loadPeople() {
+    this.personService.getAll().subscribe((res) => {
+      console.log(res);
+      //this.people = res.data;
+    });
+  }
 }

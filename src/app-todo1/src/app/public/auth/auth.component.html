@@ -9,17 +9,16 @@
         class="form-control"
         placeholder="Nome de usuário"
         formControlName="username"
-
         required
+        [class.is-invalid]="hasError('username') && submitted"
+        [class.is-valid]="!hasError('username')"
       />
-      <div
-        class="invalid-feedback"
-        *ngIf="form.controls['username'].errors && submitted"
-      >
-        <div *ngIf="form.controls['username'].errors['required']">
+      <div class="invalid-feedback" 
+          *ngIf="hasError('username') && submitted">
+        <div *ngIf="hasError('username', 'required')">
           O campo é obrigatório
         </div>
-        <div *ngIf="form.controls['username'].errors['email']">
+        <div *ngIf="hasError('username', 'email')">
           O usuário não está em um formado de e-mail válido
         </div>
       </div>
@@ -31,18 +30,17 @@
         type="password"
         class="form-control"
         formControlName="password"
-        [class.is-invalid]="form.controls['password'].errors && submitted"
-        [class.is-valid]="!form.controls['password'].errors"
+        [class.is-invalid]="hasError('password') && submitted"
+        [class.is-valid]="!hasError('password')"
       />
 
-      <div
-        class="is-invalid"
-        *ngIf="form.controls['password'].errors && submitted"
+      <div class="is-invalid"
+        *ngIf="hasError('password') && submitted"
       >
-        <div *ngIf="form.controls['password'].errors['required']">
+        <div *ngIf="hasError('password', 'required')">
           O campo é obrigatório
         </div>
-        <div *ngIf="form.controls['password'].errors['minlength']">
+        <div *ngIf="hasError('password', 'minlength')">
           A senha deve ter pelo menos 4 caracteres
         </div>
       </div>
