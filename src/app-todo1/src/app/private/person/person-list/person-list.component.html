@@ -1,5 +1,10 @@
 <div>
-  <h1 class="h3 mb-3">Person</h1>
+  <h1 class="h3 mb-3">
+    Person
+    <button class="btn btn-primary" [routerLink]="['/app/person/new']">
+      <i class="fa-solid fa-circle-plus"></i> Add
+    </button>
+  </h1>
 
   <main>
     <table class="table table-striped">
@@ -13,7 +18,11 @@
 
       <tbody>
         <tr *ngFor="let person of people">
-          <td>{{ person.first_name }} {{ person.last_name }}</td>
+          <td>
+            <a [routerLink]="[person.id]">
+              {{ person.first_name }} {{ person.last_name }}
+            </a>
+          </td>
           <td>{{ person.email }}</td>
           <td></td>
         </tr>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Person } from '../person.model';
+import { Person, PersonListResult } from '../person.model';
 import { PersonService } from '../person.service';
 
 @Component({
@@ -17,9 +17,9 @@ export class PersonListComponent implements OnInit {
   }
 
   public loadPeople() {
-    this.personService.getAll().subscribe((res) => {
+    this.personService.getAll().subscribe((res: PersonListResult) => {
       console.log(res);
-      //this.people = res.data;
+      this.people = res.data;
     });
   }
 }
