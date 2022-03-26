@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { PersonListComponent } from './person-list/person-list.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   { path: '', component: PersonListComponent },
@@ -12,6 +12,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [PersonFormComponent, PersonListComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes)],
 })
 export class PersonModule {}

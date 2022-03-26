@@ -1,1 +1,23 @@
-<p>person-list works!</p>
+<div>
+  <h1 class="h3 mb-3">Person</h1>
+
+  <main>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>E-mail</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let person of people">
+          <td>{{ person.first_name }} {{ person.last_name }}</td>
+          <td>{{ person.email }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</div>
