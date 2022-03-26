@@ -36,7 +36,19 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {}
 
-
+  /**
+   * Método auxiliar para verificar se existe erro em duas situações:
+   *  -Qualquer erro no campo
+   *  -Um erro específico no campo
+   * 
+   * @param controlName
+   * @param errorName
+   */
+  hasError(controlName: string, errorName?: string): boolean {
+    return errorName 
+      ? this.form.controls[controlName].hasError(errorName) 
+      : this.form.controls[controlName].invalid;
+  }
 
   /**
    * Método para fazer o login
