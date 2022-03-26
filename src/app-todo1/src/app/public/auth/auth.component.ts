@@ -37,13 +37,6 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {}
 
 
-  public hasError = (controlName: string, errorName: string) => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
-  public isValid = (controlName: string) : boolean => {
-    return this.form.controls[controlName].valid;
-  }
 
   /**
    * Método para fazer o login
