@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -7,12 +12,19 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
-  public form: FormGroup;
+  public form: FormGroup = new FormGroup({});
+  submitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.form = formBuilder.group({
-      username: formBuilder.control(''),
-      password: formBuilder.control(''),
+      username: formBuilder.control('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: formBuilder.control('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
     });
     /*
     this.form = new FormGroup({
@@ -28,8 +40,10 @@ export class AuthComponent implements OnInit {
    * Método para fazer o login
    */
   public login() {
+    this.submitted = true;
+
     console.log(this.form);
-    
+
     console.log(this.form.controls['username'].value);
     console.log(this.form.value['password']);
   }
