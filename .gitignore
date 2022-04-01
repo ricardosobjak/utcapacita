@@ -26,3 +26,6 @@
 hs_err_pid*
 /java-date/target/
 /java-exception/target/
+
+
+**/node_modules/

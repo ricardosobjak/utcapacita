@@ -1,0 +1,18 @@
+{
+  "name": "express-1-basic",
+  "version": "1.0.0",
+  "description": "Primeiro exemplo de Express",
+  "main": "app_ex1.js",
+  "scripts": {
+    "start": "node app_ex1.js",
+    "dev": "nodemon app_ex1.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

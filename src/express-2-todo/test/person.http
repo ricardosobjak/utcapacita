@@ -1,0 +1,14 @@
+@URLBASE = http://localhost:3000
+
+### Criar pessoa
+POST {{URLBASE}}/users
+Content-Type: application/json
+
+{
+  "name": "Juca",
+  "email": "juca1@uol.com.br",
+  "login": "juca1",
+  "password": "1234",
+  "birth": "2000-05-05",
+  "type": "admin"
+}

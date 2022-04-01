@@ -19,6 +19,8 @@ export class PersonService {
 
   /**
    * Obter uma Pessoa da API
+   * @param {number} id ID da pessoa
+   * @returns {Observable<PersonSingleResult>}
    */
   public getPerson(id: number): Observable<PersonSingleResult> {
     return this.http
