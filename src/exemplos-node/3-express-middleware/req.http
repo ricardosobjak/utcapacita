@@ -1,0 +1,17 @@
+@base = http://localhost:3000
+
+###
+GET {{base}}/users?order=name
+Authorization: 1234
+
+###
+GET {{base}}/users/1
+
+###
+POST {{base}}/users
+
+###
+PUT {{base}}/users/1
+
+###
+DELETE {{base}}/users/1

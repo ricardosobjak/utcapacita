@@ -1,0 +1,10 @@
+@base = http://localhost:3000
+
+
+POST {{base}}/auth HTTP/1.1
+Content-Type: application/json
+
+{
+  "login": "ana",
+  "password": "1234"
+}

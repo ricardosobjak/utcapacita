@@ -1,0 +1,36 @@
+@base = http://localhost:3000
+
+###
+
+POST {{base}}/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Ricardo",
+  "email": "ricardo@gmail.com",
+  "login": "ricardo",
+  "password": "1234"
+}
+
+###
+GET {{base}}/users
+
+
+### Obter um usuário pelo ID
+GET {{base}}/users/60635d7b71b2e71518068685
+
+
+### Atualizar um usuário pelo ID
+PUT {{base}}/users/60635d7b71b2e71518068685
+Content-Type: application/json
+
+{
+  "name": "Beatris",
+  "email": "bia@gmail.com",
+  "login": "bia",
+  "password": "1234"
+}
+
+
+### Deletar um usuário pelo ID
+DELETE {{base}}/users/60636582d6eab51fbc733527

@@ -1,0 +1,39 @@
+@base_address = http://localhost:3000
+
+
+GET {{base_address}}/users HTTP/1.1
+
+
+###
+
+GET {{base_address}}/users/1 HTTP/1.1
+
+###
+
+POST {{base_address}}/users HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Juca Silva",
+    "email": "juca@utfpr.edu.br",
+    "login": "juca",
+    "password": "1234"
+}
+
+###
+
+PUT {{base_address}}/users/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Carlos",
+    "email": "carlos@utfpr.edu.br",
+    "login": "carlos",
+    "password": "1234"
+}
+
+###
+
+DELETE {{base_address}}/users/1 HTTP/1.1
+Content-Type: application/json
+

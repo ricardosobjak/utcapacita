@@ -1,0 +1,51 @@
+@base = http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZWUzZDE4NjExNzdhM2U4MGZlZGU3ZiIsImlhdCI6MTYyNjIyNTk2MSwiZXhwIjoxNjI2MzEyMzYxfQ.bO7BPkPS23SoFV8-bmeW4_GFKZ374hnOaD0oOvFRMqU
+
+###
+### Obter todos os usuários
+###
+GET {{base}}/users HTTP/1.1
+Authorization: {{token}}
+
+
+###
+### Obter um usuário
+###
+GET {{base}}/users/5f695c52d144bc1abc82917c HTTP/1.1
+Authorization: {{token}}
+
+###
+### Criar um usuário
+###
+POST {{base}}/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Ana",
+  "email": "ana@gmail.com",
+  "login": "ana",
+  "password": "1234"
+}
+
+
+###
+### Editar um usuário
+###
+PUT {{base}}/users HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "id": "5f695c52d144bc1abc82917c",
+  "name": "Juca1",
+  "email": "juca@gmail.com",
+  "login": "juca1",
+  "password": "1234"
+}
+
+
+###
+### Deletar um usuário
+###
+DELETE {{base}}/users/5f6b3083ef757426c4a821d0 HTTP/1.1
+Authorization: {{token}}

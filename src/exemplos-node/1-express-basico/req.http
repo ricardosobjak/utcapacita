@@ -1,0 +1,16 @@
+@base = http://localhost:3000
+
+###
+GET {{base}}/user
+
+###
+GET {{base}}/user/1
+
+###
+POST {{base}}/user
+
+###
+PUT {{base}}/user/1
+
+###
+DELETE {{base}}/user/1
