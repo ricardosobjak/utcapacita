@@ -1,0 +1,10 @@
+@URLBASE = http://localhost:3000
+
+### Criar pessoa
+POST {{URLBASE}}/auth
+Content-Type: application/json
+
+{
+  "username": "ana",
+  "password": "1234"
+}

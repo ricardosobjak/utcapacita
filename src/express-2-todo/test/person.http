@@ -5,10 +5,13 @@ POST {{URLBASE}}/users
 Content-Type: application/json
 
 {
-  "name": "Juca",
-  "email": "juca1@uol.com.br",
-  "login": "juca1",
+  "name": "Ana",
+  "email": "ana@uol.com.br",
+  "login": "ana",
   "password": "1234",
   "birth": "2000-05-05",
   "type": "admin"
 }
+
+### Obter todos os usuários
+GET {{URLBASE}}/users
