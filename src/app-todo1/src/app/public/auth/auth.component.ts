@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginResponse } from './login.model';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-auth',
@@ -15,11 +17,14 @@ export class AuthComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
   submitted: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private router: Router) {
     this.form = formBuilder.group({
       username: formBuilder.control('', [
         Validators.required,
-        Validators.email,
+        /*Validators.email,*/
       ]),
       password: formBuilder.control('', [
         Validators.required,
@@ -34,20 +39,20 @@ export class AuthComponent implements OnInit {
     */
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-    /**
-   * Método auxiliar para verificar se existe erro em duas situações:
-   *  -Qualquer erro no campo
-   *  -Um erro específico no campo
-   * 
-   * @param controlName Nome do controle (campo do form)
-   * @param errorName Nome do erro da classe Validators
-   * @returns boolean
-   */
+  /**
+ * Método auxiliar para verificar se existe erro em duas situações:
+ *  -Qualquer erro no campo
+ *  -Um erro específico no campo
+ * 
+ * @param controlName Nome do controle (campo do form)
+ * @param errorName Nome do erro da classe Validators
+ * @returns boolean
+ */
   hasError(controlName: string, errorName?: string): boolean {
-    return errorName 
-      ? this.form.controls[controlName].hasError(errorName) 
+    return errorName
+      ? this.form.controls[controlName].hasError(errorName)
       : this.form.controls[controlName].invalid;
   }
 
@@ -55,13 +60,19 @@ export class AuthComponent implements OnInit {
    * Método para fazer o login
    */
   public login() {
-    console.log(this.form.controls['username'].errors);
-
     this.submitted = true;
 
-    console.log(this.form);
+    const username = this.form.value['username'];
+    const password = this.form.value['password'];
 
-    console.log(this.form.controls['username'].value);
-    console.log(this.form.value['password']);
+    this.loginService.login(username, password)
+      .subscribe((res: LoginResponse) => {
+        console.log(res);
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('login', JSON.stringify(res));
+        this.loginService.currentTokenValue = res.token;
+
+        this.router.navigate(['/app']);
+      });
   }
 }

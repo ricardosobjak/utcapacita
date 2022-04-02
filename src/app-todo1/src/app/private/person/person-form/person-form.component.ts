@@ -1,14 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
-  MaxValidator,
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Person, PersonSingleResult } from '../person.model';
+import { Person, } from '../person.model';
 import { PersonService } from '../person.service';
 
 @Component({
@@ -24,8 +21,10 @@ export class PersonFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.form = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      login: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      birth: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
@@ -42,9 +41,9 @@ export class PersonFormComponent implements OnInit {
       } else {
         this.personService
           .getPerson(params['id'])
-          .subscribe((res: PersonSingleResult) => {
+          .subscribe((res: Person) => {
             this.state = 'edit';
-            this.person = res.data;
+            this.person = res;
             this.updateView(this.person); //atualizar a view (form)
           });
       }
@@ -52,8 +51,10 @@ export class PersonFormComponent implements OnInit {
   }
 
   public updateView(p: Person) {
-    this.form.controls['firstName'].setValue(p.first_name);
-    this.form.controls['lastName'].setValue(p.last_name);
+    this.form.controls['name'].setValue(p.name);
+    this.form.controls['login'].setValue(p.login);
+    this.form.controls['birth'].setValue(p.birth);
+    this.form.controls['password'].setValue(p.password);
     this.form.controls['email'].setValue(p.email);
   }
 }

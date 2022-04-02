@@ -1,1 +1,1 @@
-export const API_BASE = "https://reqres.in/api/";
+export const DEFAULT_API = "http://localhost:3000/";
