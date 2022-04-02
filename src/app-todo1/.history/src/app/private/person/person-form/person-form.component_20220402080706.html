@@ -1,0 +1,27 @@
+<div>
+  <h1>Person</h1>
+
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label class="form-label">First name</label>
+      <input class="form-control" formControlName="firstName" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Last name</label>
+      <input class="form-control" formControlName="lastName" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input class="form-control" formControlName="email" />
+    </div>
+
+    <div>
+      <button>Save</button>
+      <button>Cancel</button>
+    </div>
+  </form>
+
+</div>
+
