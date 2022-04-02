@@ -1,0 +1,38 @@
+<div class="container mb-5">
+    <h3 class="my-4">
+        Meus afazeres
+        <button class="btn btn-primary" (click)="openDialog()">
+            <i class="fas fa-plus-circle"></i> Novo
+        </button>
+    </h3>
+    <!--
+    <div class="list-group">
+        <a *ngFor="let todo of todos" class="list-group-item list-group-item-action">{{ todo.title }}</a>
+    </div>
+    -->
+
+    <hr>
+
+    <div class="list-group">
+        <a *ngFor="let todo of todos" class="list-group-item list-group-item-action"
+            [class.list-group-item-dark]="todo.done" aria-current="true" aria-disabled="false"
+            (click)="openDialog(todo)">
+            <div class="d-flex flex-wrap w-100 justify-content-between align-items">
+                <h5 class="mb-1">{{ todo.title }}</h5>
+
+                <small *ngIf="todo.date && !todo.done" class="badge rounded-pill"
+                    [class.bg-danger]="getStatus(todo.date) == 'atrasado'"
+                    [class.bg-warning]="getStatus(todo.date) == 'proximo'"
+                    [class.bg-light]="getStatus(todo.date) == 'distante'"
+                    [class.text-dark]="getStatus(todo.date) == 'distante'">{{getDataText(todo.date) }}</small>
+
+                <small *ngIf="todo.done" class="badge rounded-pill bg-success">Concluído</small>
+            </div>
+            <p class="mb-1">{{ todo.description }}</p>
+            <small *ngIf="todo.date">Programado para {{ todo.date | date:"dd/MM/yyyy hh'h'mm'min'" }}</small>
+            <small *ngIf="!todo.date">Sem data programada</small>
+        </a>
+    </div>
+</div>
+
+<app-todo-dialog (confirm)="saveToDo($event)" (delete)="onDeleteToDo($event)"></app-todo-dialog>

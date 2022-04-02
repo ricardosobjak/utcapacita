@@ -1,0 +1,52 @@
+<div class="container" *ngIf="!statusError && apiResponse">
+  <h3 class="my-4">
+    Usuários
+    <button class="btn btn-primary" [routerLink]="['new']" routerLinkActive="router-link-active">
+      <i class="fas fa-plus-circle"></i> Novo
+    </button>
+  </h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Nascimento</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of apiResponse">
+        <td>
+          <a [routerLink]="[user.id]" routerLinkActive="router-link-active">{{ user.name }}</a>
+        </td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.birth | date: 'dd/MM/yyyy' }}</td>
+        <td class="">
+          <button class="btn btn-light btn-sm" (click)="deleteUser(user)"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Navigation" *ngIf="!statusError && apiResponse">
+    <ul class="pagination justify-content-center">
+      <!-- <li class="page-item" [class.active]="activePage === page" *ngFor="let page of pages(apiResponse?.totalPages)"> -->
+      <li class="page-item" [class.active]="activePage === page" *ngFor="let page of 1">
+        <a class="page-link" (click)="loadUsers(page)">{{ page + 1 }}</a>
+      </li>
+
+      <li>
+        <select class="form-select ml-2" [(ngModel)]="perPage" (change)="loadUsers(activePage)">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div *ngIf="statusError == 403" class="container mt-5 alert alert-danger">
+  ⚠️ Sem permissão para acessar esta página
+</div>

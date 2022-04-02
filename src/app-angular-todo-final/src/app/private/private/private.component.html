@@ -1,0 +1,48 @@
+<div class="d-flex flex-column main">
+
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/app']" routerLinkActive="router-link-active">To Do App</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" [routerLink]="['/app/user']" routerLinkActive="router-link-active">Usuário</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav d-flex">
+            <li class="nav-item text-nowrap">
+              <a class="nav-link" (click)="logout()" [routerLink]="['/']" routerLinkActive="router-link-active">
+                {{getName()}} (Logout)</a>
+            </li>
+          </ul>
+          <!--
+        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+          <li class="nav-item text-nowrap" *ngIf="authUtilService.isLogged()">
+              <a class="nav-link" href="#" (click)="authUtilService.logout()">Logout</a>
+          </li>
+      </ul>
+      -->
+        </div>
+      </div>
+    </nav>
+
+
+    <main class="mb-5">
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+
+  <footer class="text-center mt-auto">
+    Minha lista de afazeres.
+  </footer>
+</div>

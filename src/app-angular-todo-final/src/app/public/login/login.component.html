@@ -1,0 +1,45 @@
+<form class="form-signin text-center" [formGroup]="form">
+  <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+
+  <div class="form-group">
+    <input type="text" placeholder="Usuário" class="form-control" formControlName="username"
+      [class.is-invalid]="submitted && hasError('username')" />
+    <div class="invalid-feedback" *ngIf="submitted && hasError('username')">
+      <div *ngIf="hasError('username', 'required')">
+        Usuário é obrigatório
+      </div>
+      <div *ngIf="hasError('username', 'email')">
+        O login não está em um formato válido de e-mail
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mt-2">
+    <input type="password" placeholder="Senha" class="form-control" formControlName="password" [ngClass]="{
+        'is-invalid': submitted && form.controls['password'].errors
+      }" />
+    <div class="invalid-feedback mt-2" *ngIf="form.hasError && form.controls['password'].errors">
+      <div *ngIf="form.controls.password.errors.required">
+        Senha é obrigatória
+      </div>
+      <div *ngIf="form.controls.password.errors.minlength">
+        A senha deve ter pelos menos 4 caracteres
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mt-2">
+    <button class="btn btn-success" (click)="onSubmit()">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+      Login
+    </button>
+    <a class="btn btn-link">Register</a>
+  </div>
+
+  <img *ngIf="loading" class="pl-3"
+    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
+  <div role="alert" class="alert alert-danger" *ngIf="message">
+    {{ message }}
+  </div>
+</form>

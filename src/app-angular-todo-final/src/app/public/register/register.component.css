@@ -1,0 +1,10 @@
+header {
+  height: 80px;
+  background-color: #ddd;
+  display: flex;
+}
+
+header > h1 {
+    font-size: 2em;
+    margin: auto;
+}
