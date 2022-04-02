@@ -1,0 +1,43 @@
+@base_address = http://localhost:3000
+#@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ4NzU3MDQyLCJleHAiOjE2NDg4NDM0NDJ9.uq8FD_ZYN5XB3SCg-MtHnaU45uiBvN8l793fV0wWWbk
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjQ4NzU3MTc0LCJleHAiOjE2NDg4NDM1NzR9.wWkmTUoJbi6QbsRyNwWc1OBf7ETLjp7PLzZ8_GIkZJQ
+
+GET {{base_address}}/user HTTP/1.1
+Authorization: {{token}}
+
+###
+
+GET {{base_address}}/user/5 HTTP/1.1
+Authorization: {{token}}
+
+###
+
+POST {{base_address}}/user HTTP/1.1
+Content-type: application/json
+
+{
+    "name": "Juca",
+    "email": "juca@utfpr.edu.br",
+    "login": "juca",
+    "password": "1234",
+    "birth": "2010-10-22",
+    "type": "admin"
+}
+
+###
+
+PUT {{base_address}}/user/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Carlos",
+    "email": "carlos@utfpr.edu.br",
+    "login": "carlos",
+    "password": "1234"
+}
+
+###
+
+DELETE {{base_address}}/user/8 HTTP/1.1
+Content-Type: application/json
+
