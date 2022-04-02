@@ -5,6 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { catchError, of, throwError } from 'rxjs';
 import { Person, } from '../person.model';
 import { PersonService } from '../person.service';
 
@@ -56,5 +57,29 @@ export class PersonFormComponent implements OnInit {
     this.form.controls['birth'].setValue(p.birth);
     this.form.controls['password'].setValue(p.password);
     this.form.controls['email'].setValue(p.email);
+  }
+
+  public save() {
+    const f = this.form.value;
+    const person = new Person();
+
+    this.person.name = f['name'];
+    this.person.login = f['login'];
+    this.person.password = f['password'];
+    this.person.birth = f['birth'];
+    this.person.email = f['email'];
+
+    this.personService.create(person)
+      .pipe(
+        catchError(err => {
+          console.error("Erro ao salvar pessoa", err);
+          alert("Falha do inserir a pessoa");
+          return of(new Person());
+        })
+      )
+      .subscribe((res: Person) => {
+        console.log("Pessoa salvar: ", res);
+        alert("Pessoa inserida com sucesso");
+      });
   }
 }

@@ -40,4 +40,13 @@ export class PersonService {
       .get<Person>(DEFAULT_API + 'user/' + id, { headers: this.getHttpOptions() })
       .pipe(retry(1));
   }
+
+  // Criar uma pessoa na API
+  public create(person: Person): Observable<Person> {
+    return this.http
+      .post<Person>(
+        DEFAULT_API + 'user',
+        JSON.stringify(person),
+        { headers: this.getHttpOptions() });
+  }
 }
