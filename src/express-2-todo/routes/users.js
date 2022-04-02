@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 const { Person } = require('../database/models');
+const { isAdmin } = require('../middlewares/isAdmin');
+const { isAuthorized } = require('../middlewares/isAuthorized');
 
 /**
  * Obter todos os usuários do banco de dados
  */
-router.get('/', async (req, res) => {
+router.get('/', isAuthorized, isAdmin, async (req, res) => {
   const users = await Person.findAll({
     attributes: { exclude: ['password'] },
   });
