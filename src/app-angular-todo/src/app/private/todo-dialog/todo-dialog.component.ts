@@ -8,7 +8,7 @@ import { ToDo } from '../todo/todo.model';
   templateUrl: './todo-dialog.component.html'
 })
 export class TodoDialogComponent implements OnInit {
-  form?: FormGroup;
+  form!: FormGroup;
   modal!: Modal;
   todo?: ToDo;
 
